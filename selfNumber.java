@@ -15,15 +15,20 @@ class selfNumber {
         for (int i = 0; i < length; i++) {
             array[i] = i + 1;
         }
-
         for (int i = 0; i < length; i++) {
             Integer temp = i + 1;
             int number = i + 1;
+            int number_length = String.valueOf(number).length();
+            int[] numbers = new int[number_length];
+            int j = 0;
             do {
-                number += temp % 10;
                 temp = temp / 10;
+                numbers[j] = temp;
+                j++;
             } while (temp % 10 > 0);
-            System.out.println(number);
+            for (int k = 0; k < number_length; k++) {
+                number += numbers[k];
+            }
             if (Arrays.binarySearch(array, number) > 0) {
                 array[Arrays.binarySearch(array, number)] = 0;
             }
@@ -31,7 +36,6 @@ class selfNumber {
 
         for (int i = 0; i < length; i++) {
             hasil += array[i];
-            System.out.println(array[i]);
         }
         return hasil;
     }
